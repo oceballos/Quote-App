@@ -3,13 +3,13 @@ header('Content-type: application/json');
 
 $server = "localhost";
 $username = "root";
-$password = "";
+$password = "Turbuhaler160";
 $database = "quotedemo";
 
 $con = mysql_connect($server, $username, $password) or die ("Could not connect: " . mysql_error());
 mysql_select_db($database, $con);
 
-$la = mysql_query("SELECT MAX(id) FROM songs") or die ("Query error: 1" . mysql_error());
+$la = mysql_query("SELECT id FROM songs ORDER BY RAND() LIMIT 1") or die ("Query error: 1" . mysql_error());
 
 $la = array();
 //while($row = mysql_fetch_assoc($la)) {

@@ -2,7 +2,7 @@
 
 $server = "localhost";
 $username = "root";
-$password = "";
+$password = "abcdef1234";
 $database = "quotedemo";
 
 $con = mysql_connect($server, $username, $password) or die ("Could not connect: " . mysql_error());
