@@ -15,7 +15,7 @@ mt_srand(time());
 $max = mysql_num_rows($qbaney); 
 $rand = mt_rand(1,$max); 
 
-$sqldo = mysql_query("SELECT frase FROM songs WHERE id='$rand'"); 
+$sqldo = mysql_query("SELECT frase, nombre FROM songs WHERE id='$rand'"); 
 
 while($ban = mysql_fetch_assoc($sqldo)){
 $records[] = $ban;
