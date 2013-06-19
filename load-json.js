@@ -2,7 +2,7 @@ $(document).ready(function(){
 	var output = $('#output');
 
 	$.ajax({
-		url: 'http://localhost/parte2/conex.php',
+		url: 'culapps.com/conex.php',
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
 		timeout: 5000,
