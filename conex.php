@@ -9,29 +9,18 @@ $database = "quotedemo";
 $con = mysql_connect($server, $username, $password) or die ("Could not connect: " . mysql_error());
 mysql_select_db($database, $con);
 
-$la = mysql_query("SELECT id FROM songs ORDER BY RAND() LIMIT 1") or die ("Query error: 1" . mysql_error());
 
-$la = array();
-//while($row = mysql_fetch_assoc($la)) {
-//	$la_b[] = $row;
-//}
+$qbaney = mysql_query("SELECT * FROM songs");
+mt_srand(time());
+$max = mysql_num_rows($qbaney);
+$rand = mt_rand(1,$max);
 
-//$la_b[1] = mysql_fetch_assoc($la);
-//$la_b [2] = mysql_fetch_assoc($la);
-$do = $la[1];
+$sqldo = mysql_query("SELECT frase FROM songs WHERE id='$rand'");
 
-$ran = rand(1,$do);
-//echo "$la";
-$sql = "SELECT frase FROM songs WHERE id = $ran";
-$result = mysql_query($sql) or die ("Query error: PUCHA " . mysql_error());
-
-$records = array();
-
-while($row = mysql_fetch_assoc($result)) {
-	$records[] = $row;
-}
+$ban = mysql_fetch_assoc($sqldo);
 
 mysql_close($con);
 
-echo $_GET['jsoncallback'] . '(' . json_encode($records) . ');';
+echo $_GET['jsoncallback'] . '(' . json_encode($ban) . ');';
+
 ?>
