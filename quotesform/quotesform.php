@@ -100,7 +100,7 @@ a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usu
   <div class="content">
     <h1>Instrucciones</h1>
     <p>Formulario simple para agregar frases de canciones a Quote&quot;&quot;</p>
-    <h2>Formulario</h2></div>
+    <h2>Formulario ingreso</h2></div>
     <div class="formulario">    
     <form name="fraseQuote" action="procesar.php" method="post">
     <ul><li>
@@ -113,6 +113,14 @@ a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usu
      <br />
      <input type="submit" value="enviar" />
     </form> 
+  </div>
+  <div class="formulario">
+  <h2> Formulario borrar</h2>
+  <form name="fraseQuote" action="borrar.php" method="post">
+    <ul><li>
+    <b>Número Frase:</b> <li><input name="frase" id="frase" size="100" />
+    <input type="submit" value="enviar" />
+    </form>
   </div>
   <div class="footer">
     <p>culzapps.com</p>

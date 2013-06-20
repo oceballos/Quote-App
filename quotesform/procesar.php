@@ -2,7 +2,7 @@
 
 define('DB_NAME', 'quotesdemo');
 define('DB_USER', 'root');
-define('DB_PASS', 'Turbohaler160');
+define('DB_PASS', 'Turbuhaler160');
 define('DB_HOST', 'localhost');
 
 $link = mysql_connect(DB_HOST, DB_USER, DB_PASS);
