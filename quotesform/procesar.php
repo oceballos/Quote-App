@@ -25,7 +25,7 @@ $imagen = $_POST['imagen'];
 
 
 
-$sql = "INSERT INTO songs (id, frase, nombre, autor, youtube, imagen) VALUES ('$id', '$frase', '$nombre', '$youtube', '$imagen2')";
+$sql = "INSERT INTO songs (frase, nombre, autor, youtube, imagen) VALUES ('$frase', '$nombre', '$youtube', '$imagen2')";
 
 if (!mysql_query($sql)) {
     die('Error: ' . mysql_error()); 
