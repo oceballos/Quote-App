@@ -1,6 +1,6 @@
 <?php
 
-define('DB_NAME', 'quotesdemo');
+define('DB_NAME', 'quotedemo');
 define('DB_USER', 'root');
 define('DB_PASS', 'Turbuhaler160');
 define('DB_HOST', 'localhost');
