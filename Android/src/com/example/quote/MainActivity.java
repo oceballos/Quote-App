@@ -1,8 +1,8 @@
 package com.example.quote;
 
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
+//import android.app.Activity;
+//import android.view.Menu;
 import org.apache.cordova.*; //PHONEGAP
 
 public class MainActivity extends DroidGap {
