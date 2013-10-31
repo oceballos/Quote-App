@@ -64,17 +64,9 @@
 	<div data-role="header">
 		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
 	</div>
-	<div data-role="content" align="center">
-			<img src="http://1.bp.blogspot.com/-h8x25DuVt6c/T_IGoB35yOI/AAAAAAAAAaQ/4x3Ceq2JOtw/s400/manowar+kon+c.jpg" width="250px" height="200px" class="img-rounded">	
-			<br>
-			<p>... intentaron poner a prueba nuestro espiritu, ellos probaron el acero antes de que nos hicieran ...</p>
-			<br>
-			<div data-role="controlgroup" data-type="horizontal">
-				<a href="#home" data-role="button">Home</a>
-				<a href="#" data-role="button">I Like</a>
-				<a href="#" data-role="button">Don't Like</a>
-				<a href="#anysong.html" data-role="button">Next</a>
-			</div>
+	<div data-role="content">	
+			<ul id='output' <!--data-role="listview" data-filter="true" -->
+		</ul>			
 	</div>
 	<div data-role="footer">
 		<h4>&copy; CullzApp</h4>
@@ -88,6 +80,9 @@
 	<div data-role="content">
 		<p>hola usuario</p>
 	</div>
+	<div data-role="footer">
+		<h4>&copy; CullzApp</h4>
+	</div>
 </div>
 
 
@@ -98,6 +93,7 @@ $('#respuesta').html(r); // Mostrar la respuesta del servidor en el div con el i
 }
 
 function siError(e){
+console.log(e)
 alert('Ocurrió un error al realizar la petición: '+e.statusText);
 }
 
@@ -107,18 +103,31 @@ $('#formulario').submit(function() {
 	var datosPassword = $("#passwd").val()
 	url = "http://localhost:5000/login"
 	url2 = "http://localhost:5000/test";
-	//data =  {user:datosUsuario,passwd:datosPassword}
-	data = {user:"l30bravo",passwd:"123"}
+	data =  {user:datosUsuario,passwd:datosPassword}
+	//data = {user:"l30bravo",passwd:"123"}
  	//alert( "\nhola" )
 
- 	$.post(url,data,
-		function(r){
-			$('#respuesta').html('respuesta del servidor: '+r);
-			return true;
+
+$.ajax({
+		url: url,
+		dataType: 'json',
+		//dataType: 'application/x-www-form-urlencoded',
+		//dataType: "application/json",
+		//dataType: "html",
+		type : "post",
+		traditional: true,
+		data:data,
+		complete: function(xhr, statusText){  
+			alert(xhr.responseText);
 		},
-		'json').error(function(e){
-			alert('Ocurrió un error al realizar la petición: '+e.statusText);
-		});
+	    success: function(result) {
+    	    console.log(result);
+	    },
+		error: function( req, status, err ) {
+		    console.log( 'something went wrong', status, err );
+		}
+});
+
 		
 	//alert("chao")
 	return false;

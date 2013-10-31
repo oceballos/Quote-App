@@ -1,0 +1,70 @@
+<script>
+
+function siRespuesta(r){
+$('#respuesta').html(r); // Mostrar la respuesta del servidor en el div con el id "respuesta"
+}
+
+function siError(e){
+console.log(e)
+alert('Ocurrió un error al realizar la petición: '+e.statusText);
+}
+
+$('#formulario').submit(function() {
+	// recolecta los valores que inserto el usuario
+	var datosUsuario = $("#user").val()
+	var datosPassword = $("#passwd").val()
+	url = "http://localhost:5000/login"
+	url2 = "http://localhost:5000/test";
+	data =  {user:datosUsuario,passwd:datosPassword}
+	//data = {user:"l30bravo",passwd:"123"}
+ 	//alert( "\nhola" )
+
+
+$.ajax({
+		url: url,
+		dataType: 'json',
+		type : "POST",
+		data:data,
+		//jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(datax){
+				alert(datax)
+		},
+		error: function (e) {
+			alert(e)
+		}
+});
+
+		
+	//alert("chao")
+	return false;
+	});
+</script>
+
+
+-------------------------------------------------------------------
+
+
+<script>
+ 
+$('#formulario').submit(function() {
+	// recolecta los valores que inserto el usuario
+	var datosUsuario = $("#user").val()
+	var datosPassword = $("#passwd").val()
+	//archivoValidacion = "http://revolucion.mobi/ejemplos/phonegap/envioFormulario/validacion_de_datos.php?jsoncallback=?"
+	archivoValidacion = "http://localhost:5000/login2"
+ 
+	$.getJSON( archivoValidacion, { user:datosUsuario ,passwd:datosPassword})
+		.done(function(respuestaServer) {
+			alert(respuestaServer.edo + "\n EDO ")
+			if(respuestaServer.validacion == "ok"){
+			/// si la validacion es correcta, muestra la pantalla "home"
+			$.mobile.changePage("#logeado")
+			}else{
+			/// ejecutar una conducta cuando la validacion falla
+			alert("error, usuario o clave invalida")
+		}
+	})
+	return false;
+})
+</script>
