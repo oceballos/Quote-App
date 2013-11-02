@@ -8,7 +8,6 @@
 <link href="css/jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css"/>
 <script src="js/jquery-1.6.4.min.js" type="text/javascript"></script>
 <script src="js/jquery.mobile-1.0.min.js" type="text/javascript"></script>
-<script src="js/load-json.js"></script>
 </head> 
 <body> 
 
@@ -51,11 +50,12 @@
 
 
 <div data-role="page" id="login">
+<script src="js/login.js"></script>
 	<div data-role="header">
 		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
 	</div>
 	<div data-role="content">
-		<form id="formulario" method="post">
+		<form id="login" method="post">
 			<label> Usuario </label> 
 				<input type="text" id="user" name="user">
 				<label> Password </label>
@@ -70,12 +70,12 @@
 
 
 <div data-role="page" id="anysong">
+<script src="js/anysong.js"></script>
 	<div data-role="header">
 		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
 	</div>
 	<div data-role="content">	
-			<ul id='output' <!--data-role="listview" data-filter="true" -->
-		</ul>			
+			<ul id='anysong_msg'></ul>			
 	</div>
 	<div data-role="footer">
 		<h4>&copy; CullzApp</h4>
@@ -87,54 +87,17 @@
 
 
 <div data-role="page" id="home_user">
+<script src="js/home_user.js"></script>
 	<div data-role="header">
 		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
 	</div>
 	<div data-role="content">
-		<p>hola usuario</p>
+		<ul id='bienvenido_msg'></ul>
 	</div>
 	<div data-role="footer">
 		<h4>&copy; CullzApp</h4>
 	</div>
 </div>
-
-
-
-
-<script>
-$('#formulario').submit(function() {
-	// recolecta los valores que inserto el usuario
-	var datosUsuario = $("#user").val()
-	var datosPassword = $("#passwd").val()
-	url = "http://localhost:5000/login"
-	data =  {user:datosUsuario,passwd:datosPassword}
-
-	$.ajax({
-		url: url,
-		dataType: 'json',
-		type : "post",
-		data:data,
-		crossDomain: true,
-		complete: function(xhr, statusText){  
-			console.log(xhr.responseText);
-		},
-	    success: function(result) {
-			if (result.edo=="ok"){
-				sessionStorage.setItem("nombre", result.user);
-				sessionStorage.setItem("id", result.id);
-				$.mobile.changePage("#home_user")
-			}
-			else if(result.edo=="no"){
-				alert("Usuario o clave no valida");
-			}
-	    },
-		error: function( req, status, err ) {
-		    console.log( 'something went wrong', status, err );
-		}
-	});
-	return false;
-});
-</script>
 
 
 </body>
