@@ -14,29 +14,27 @@ $('#formulario').submit(function() {
 	var datosUsuario = $("#user").val()
 	var datosPassword = $("#passwd").val()
 	url = "http://localhost:5000/login"
-	url2 = "http://localhost:5000/test";
 	data =  {user:datosUsuario,passwd:datosPassword}
-	//data = {user:"l30bravo",passwd:"123"}
- 	//alert( "\nhola" )
-
 
 $.ajax({
 		url: url,
 		dataType: 'json',
-		type : "POST",
+		//dataType: 'application/x-www-form-urlencoded',
+		//dataType: "application/json",
+		//dataType: "html",
+		type : "post",
+		traditional: true,
 		data:data,
-		//jsonp: 'jsoncallback',
-		timeout: 5000,
-		success: function(datax){
-				alert(datax)
+		complete: function(xhr, statusText){  
+			alert(xhr.responseText);
 		},
-		error: function (e) {
-			alert(e)
+	    success: function(result) {
+    	    console.log(result);
+	    },
+		error: function( req, status, err ) {
+		    console.log( 'something went wrong', status, err );
 		}
 });
-
-		
-	//alert("chao")
 	return false;
 	});
 </script>

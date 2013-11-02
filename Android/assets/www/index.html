@@ -12,6 +12,8 @@
 </head> 
 <body> 
 
+
+
 <div data-role="page" id="home" width="100%" height="100%">
 	<div data-role="header">
 		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
@@ -44,6 +46,10 @@
 	</div>
 </div>
 
+
+
+
+
 <div data-role="page" id="login">
 	<div data-role="header">
 		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
@@ -60,6 +66,9 @@
 </div>
 
 
+
+
+
 <div data-role="page" id="anysong">
 	<div data-role="header">
 		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
@@ -73,7 +82,11 @@
 	</div>
 </div>
 
-<div data-role="page" id="logeado">
+
+
+
+
+<div data-role="page" id="home_user">
 	<div data-role="header">
 		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
 	</div>
@@ -86,8 +99,9 @@
 </div>
 
 
-<script>
 
+
+<script>
 function siRespuesta(r){
 $('#respuesta').html(r); // Mostrar la respuesta del servidor en el div con el id "respuesta"
 }
@@ -102,36 +116,33 @@ $('#formulario').submit(function() {
 	var datosUsuario = $("#user").val()
 	var datosPassword = $("#passwd").val()
 	url = "http://localhost:5000/login"
-	url2 = "http://localhost:5000/test";
 	data =  {user:datosUsuario,passwd:datosPassword}
-	//data = {user:"l30bravo",passwd:"123"}
- 	//alert( "\nhola" )
 
-
-$.ajax({
+	$.ajax({
 		url: url,
 		dataType: 'json',
-		//dataType: 'application/x-www-form-urlencoded',
-		//dataType: "application/json",
-		//dataType: "html",
 		type : "post",
-		traditional: true,
 		data:data,
+		crossDomain: true,
 		complete: function(xhr, statusText){  
 			alert(xhr.responseText);
 		},
 	    success: function(result) {
-    	    console.log(result);
+			if (result.edo=="ok"){
+				sessionStorage.setItem("nombre", result.user);
+				sessionStorage.setItem("id", result.id);
+				$.mobile.changePage("#home_user")
+			}
+			else if(result.edo=="no"){
+				alert("Usuario o clave no valida");
+			}
 	    },
 		error: function( req, status, err ) {
 		    console.log( 'something went wrong', status, err );
 		}
-});
-
-		
-	//alert("chao")
-	return false;
 	});
+	return false;
+});
 </script>
 
 
