@@ -2,7 +2,7 @@ $('#login').submit(function() {
 	// recolecta los valores que inserto el usuario
 	var datosUsuario = $("#user").val()
 	var datosPassword = $("#passwd").val()
-	url = "http://localhost:5000/login"
+	url = "http://culzapps.com:5000/login"
 	data =  {user:datosUsuario,passwd:datosPassword}
 
 	$.ajax({
@@ -25,7 +25,7 @@ $('#login').submit(function() {
 			}
 	    },
 		error: function( req, status, err ) {
-		    output.text('Error al capturar la frase');
+		    alert('Error establecer conecxión');
 		}
 	});
 	return false;

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	var output = $('#anysong_msg');
-	url = "http://localhost:5000/songs/"
+	url = "http://culzapps.com:5000/songs/"
 	$.ajax({
 		url: url,
 		dataType: 'json',
