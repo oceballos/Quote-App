@@ -9,6 +9,7 @@ $(document).ready(function(){
     var landmark = 'Bienvenido '+sessionStorage.getItem("nombre");
 	var output = $('#bienvenido_msg');
 	url = "http://culzapps.com:5000/songs/"
+		
 	$.ajax({
 		url: url,
 		dataType: 'json',
@@ -27,3 +28,27 @@ $(document).ready(function(){
 	});
 
 });
+
+function like(){
+	
+	url = "http://culzapps.com:5000/like/"
+	data =  {id_user:5,id_item:5}
+	// jax
+		$.ajax({
+		url: url,
+	//	dataType: 'json',
+		type : "post",
+		data:data,
+		crossDomain: true,
+		complete: function(xhr, statusText){  
+			console.log(xhr.responseText);
+		},
+	    success: function(result) {
+			},
+		error: function( req, status, err ) {
+		    alert('Error establecer conecxión');
+		}
+	});
+	return false;
+		
+	}
