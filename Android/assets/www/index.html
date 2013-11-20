@@ -64,12 +64,16 @@
 
 
 <div data-role="page" id="anysong">
+<script>grande { font-size:16.2em;font-weight:100%; }</script>
+<script>medio { font-size:9.2em;font-weight:100%; }</script>
+<script>chico { font-size:6.2em;font-weight:100%; }</script>
 <script src="js/anysong.js"></script>
 	<div data-role="header">
 		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
 	</div>
 	<div data-role="content">	
 			<ul id='anysong_msg'></ul>			
+            <input type="button" style="background:darkblue"  value="Next" id="Next" onclick="document.location.reload()">	
 	</div>
 	<div data-role="footer">
 		<h4>&copy; CullzApp</h4>
@@ -85,6 +89,8 @@
 	</div>
 	<div data-role="content">
 		<ul id='bienvenido_msg'></ul>
+        <input type="submit"  style="background:#3333CC" value="Like" id="like" onclick="document.location.reload()">	
+        <input type="submit"  value="Next" id="next" onclick="document.location.reload()">	
 	</div>
 	<div data-role="footer">
 		<h4>&copy; CullzApp</h4>
