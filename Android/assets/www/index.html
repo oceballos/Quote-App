@@ -19,8 +19,8 @@
 	<div data-role="content">	
 		<ul data-role="listview">
 			<div data-role="fieldcontain" align="center">
-			<h1>
-				<label for="feel" class="select">I Feel:</label>
+			
+				<label for="feel" class="select"><h2>I Feel:</h2></label>
 				<select name="feel" id="id_feel">
 					<option value="standard">Happy</option>
 					<option value="rush">Sad</option>
@@ -64,9 +64,6 @@
 
 
 <div data-role="page" id="anysong">
-<script>grande { font-size:16.2em;font-weight:100%; }</script>
-<script>medio { font-size:9.2em;font-weight:100%; }</script>
-<script>chico { font-size:6.2em;font-weight:100%; }</script>
 <script src="js/anysong.js"></script>
 	<div data-role="header">
 		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
@@ -80,17 +77,43 @@
 	</div>
 </div>
 
-
-
 <div data-role="page" id="home_user">
 <script src="js/home_user.js"></script>
 	<div data-role="header">
 		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
 	</div>
 	<div data-role="content">
-		<ul id='bienvenido_msg'></ul>
-        <input type="submit" onclick = "like()" style="background:#3333CC" value="Like" id="like" >	
-        <input type="submit"  value="Next" id="next" onclick="document.location.reload()">	
+        <label for="feel" class="select"><h2>Feel</h2></label>
+				<select name="feel" id="id_feel">
+					<option value="standard">Happy</option>
+					<option value="rush">Sad</option>
+					<option value="rush">Ironic</option>
+					<option value="rush">Power</option>
+					<option value="express">tired</option>
+					<option value="overnight">energetic</option>
+				</select>
+        <div align="center">
+            <a href="#song_user" data-role="button" data-inline="true" data-theme="b">Send</a>
+        </div>
+	</div>
+	<div data-role="footer">
+		<h4>&copy; CulzApp</h4>
+	</div>
+</div>
+
+<div data-role="page" id="song_user">
+<script src="js/song_user.js"></script>
+	<div data-role="header">
+		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
+	</div>
+	<div data-role="content">
+		<ul id='songuser'></ul>
+        <div align="center">
+            <a href="#home_user;" data-role="button" data-inline="true" data-theme="b">Back</a>
+            <a href="#"  onclick = "like()" data-role="button" data-inline="true" data-theme="a">Like</a>
+		    <a href="javascript:document.location.reload();" data-role="button" data-inline="true" data-theme="b">Next</a>
+        </div>
+        
 	</div>
 	<div data-role="footer">
 		<h4>&copy; CulzApp</h4>
