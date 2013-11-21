@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 function like(){
 	
-	url = "http://culzapps.com:5000/like/"
+	url = "http://culzapps.com:5000/like"
 	data =  {id_user:5,id_item:5}
 	// jax
 		$.ajax({
