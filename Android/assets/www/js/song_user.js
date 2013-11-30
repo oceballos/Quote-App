@@ -15,6 +15,8 @@ $(document).ready(function(){
             id_song = result.id;
 			var landmark = '<b>Hola '+sessionStorage.getItem("nombre")+'</b>'+'<li class="ui-li-has-thumb ui-btn ui-btn-icon-right ui-li ui-btn-down-c ui-btn-up-c"><div class="ui-btn-inner"><a href="#home_user" class="ui-link-inherit"><div class="ui-btn-text"><h3>'+result.frase+'</h3>'
 				+ '<p class="ui-li-desc"><h5>'+result.nombre+'</h5></p> '+'<p class="ui-li-desc"><h6>'+result.banda+'</h6></p><div></a><span class="ui-icon ui-icon-arrow-r"></span></li>';
+		var landmark = '<b>Hola '+sessionStorage.getItem("nombre")+'</b>'+'<h3>'+result.frase+'</h3>'+'<h4> <b>Canción : </b>'+result.nombre+'</h4>'+'<h5> <b>Por : </b>'+result.banda+'</h5>'
+				output.append(landmark);
 				output.append(landmark);
 	    },
 		error: function( req, status, err ) {

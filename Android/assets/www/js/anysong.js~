@@ -1,0 +1,26 @@
+$(document).ready(function(){
+	var output = $('#anysong_msg');
+	url = "http://culzapps.com:5000/songs/"
+	$.ajax({
+		url: url,
+		dataType: 'json',
+		crossDomain: true,
+		complete: function(xhr, statusText){  
+			console.log(xhr.responseText);
+		},
+	    success: function(result) {
+            if(sessionStorage.getItem("mood1") != null){
+               // var landmark = '<b>Mood2 '+sessionStorage.getItem("mood2")+'</b>'+'<b>Mood1 '+sessionStorage.getItem("mood1")+'</b>'+'<li class="ui-li-has-thumb ui-btn ui-btn-icon-right ui-li ui-btn-down-c ui-btn-up-c"><div class="ui-btn-inner"><a href="#anysong" class="ui-link-inherit"><div class="ui-btn-text"><h3>'+result.frase+'</h3>'+ '<p class="ui-li-desc"><h5>'+result.nombre+'</h5></p> '+'<p class="ui-li-desc"><h6>'+result.banda+'</h6></p><div></a><span class="ui-icon ui-icon-arrow-r"></span></li>';
+		var landmark = '<h3>'+result.frase+'</h3>'+'<h4> <b>Canción : </b>'+result.nombre+'</h4>'+'<h5> <b>Por : </b>'+result.banda+'</h5>'
+				output.append(landmark);
+            }
+            else{
+                output.append('Error al camptudad sessionStorage!');
+            }
+	    },
+		error: function( req, status, err ) {
+		    console.log( 'something went wrong', status, err );
+		}
+	});
+
+});

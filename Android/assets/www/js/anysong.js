@@ -9,9 +9,13 @@ $(document).ready(function(){
 			console.log(xhr.responseText);
 		},
 	    success: function(result) {
-			var landmark = '<li class="ui-li-has-thumb ui-btn ui-btn-icon-right ui-li ui-btn-down-c ui-btn-up-c"><div class="ui-btn-inner"><a href="#anysong" class="ui-link-inherit"><div class="ui-btn-text"><h3>'+result.frase+'</h3>'
-				+ '<p class="ui-li-desc"><h5>'+result.nombre+'</h5></p> '+'<p class="ui-li-desc"><h6>'+result.banda+'</h6></p><div></a><span class="ui-icon ui-icon-arrow-r"></span></li>';
+            if(sessionStorage.getItem("mood1") != null){
+		var landmark = '<h3>'+result.frase+'</h3>'+'<h4> <b>Canción : </b>'+result.nombre+'</h4>'+'<h5> <b>Por : </b>'+result.banda+'</h5>'
 				output.append(landmark);
+            }
+            else{
+                output.append('Error al camptudad sessionStorage!');
+            }
 	    },
 		error: function( req, status, err ) {
 		    console.log( 'something went wrong', status, err );

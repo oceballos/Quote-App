@@ -18,7 +18,7 @@ $('#login').submit(function() {
 			if (result.edo=="ok"){
 				sessionStorage.setItem("nombre", result.user);
 				sessionStorage.setItem("id", result.id);
-				$.mobile.changePage("#home_user")
+				$.mobile.changePage("home_user.html")
 			}
 			else if(result.edo=="no"){
 				alert("Usuario o clave no valida");
