@@ -42,5 +42,5 @@ function l_send(){
         sessionStorage.setItem("cont", 1);
         sessionStorage.setItem("max", 20);
         //alert(sessionStorage.getItem("mood1"));
-        $.mobile.changePage("song_user.html")
+        $.mobile.changePage("#song_user")
 }

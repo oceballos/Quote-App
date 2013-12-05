@@ -14,40 +14,34 @@
 	<div data-role="header">
 		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
 	</div>
-	<div data-role="content">
-        <label for="feel" class="select"><h2>Feel</h2></label>
-				<select name="feel" id="id_feel">
-					<option value="standard">Happy</option>
-					<option value="rush">Sad</option>
-					<option value="rush">Ironic</option>
-					<option value="rush">Power</option>
-					<option value="express">tired</option>
-					<option value="overnight">energetic</option>
-				</select>
-        <div align="center">
-            <a href="#song_user" data-role="button" data-inline="true" data-theme="b">Send</a>
-        </div>
+	<div  data-role="fieldcontain" align="center">
+        <form id="home" method="get">
+                <label for="pvse">Pensativo vs Enloquecido</label>
+                    <br>
+                    <input name="pvse" id="pvse" value="50" min="0" max="100" step="50" data-highlight="true" type="range">
+                    <br>
+                <label for="tvsf">Triste vs Feliz</label>
+                    <br>
+                    <input name="tvsf" id="tvsf" value="50" min="0" max="100" step="50" data-highlight="true" type="range">
+                    <br>
+                <label for="pvsf">Paz vs Furioso:</label>
+                    <br>
+                    <input name="pvsf" id="pvsf" value="50" min="0" max="100" step="50" data-highlight="true" type="range">
+                    <br>
+                <label for="fvsc">Frio vs Caliente:</label>
+                    <br>
+                    <input name="fvsc" id="fvsc" value="50" min="0" max="100" step="50" data-highlight="true" type="range">
+                    <br>
+                <label for="dvse">Desenamorado vs Enamorado:</label>
+                    <br>
+                    <input name="dvse" id="dvse" value="50" min="0" max="100" step="50" data-highlight="true" type="range">
+                    <br>
+			<a href="#" onclick = "l_send()" data-role="button" data-inline="true" data-theme="b">Enviar</a>
+			</form>        
 	</div>
 	<div data-role="footer">
 		<h4>&copy; CulzApp</h4>
 	</div>
 </div>
 
-<div data-role="page" id="song_user">
-<script src="js/song_user.js"></script>
-	<div data-role="header">
-		<h1><img src="images/banner.png"  width="140px" height="40px" class="img-rounded"></h1>
-	</div>
-	<div data-role="content">
-		<ul id='songuser'></ul>
-        <div align="center">
-            <a href="#home;" data-role="button" data-inline="true" data-theme="b">Back</a>
-            <a href="#"  onclick = "like()" data-role="button" data-inline="true" data-theme="a">Like</a>
-	    <a href="javascript:document.location.reload();" data-role="button" data-inline="true" data-theme="b">Next</a>
-        </div>
-        
-	</div>
-	<div data-role="footer">
-		<h4>&copy; CulzApp</h4>
-	</div>
-</div>
+

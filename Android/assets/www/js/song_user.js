@@ -1,23 +1,42 @@
 var id_song=0;
 
 $(document).ready(function(){
-    var landmark = 'Hola'+sessionStorage.getItem("nombre");
+	var mood1 = sessionStorage.getItem('mood1');
+	var mood2 = sessionStorage.getItem('mood2');
+	var mood3 = sessionStorage.getItem('mood3');
+	var mood4 = sessionStorage.getItem('mood4');
+	var mood5 = sessionStorage.getItem('mood5');
+    var id_user = sessionStorage.getItem('id');
+    var cont = sessionStorage.getItem('cont');
+    //var oli = 1;
 	var output = $('#songuser');
-	url = "http://culzapps.com:5000/songs/";
+    //var cont =1;
+    
+	url = "http://culzapps.com:5000/usongs";
+    
+    data = {mood_1:mood1, mood_2:mood2, mood_3:mood3, mood_4:mood4, mood_5:mood5, id:id_user, cont:cont}
 	$.ajax({
 		url: url,
 		dataType: 'json',
+        type : 'get',
+        data : data,
 		crossDomain: true,
 		complete: function(xhr, statusText){  
 			console.log(xhr.responseText);
 		},
 	    success: function(result) {
-            id_song = result.id;
-			var landmark = '<b>Hola '+sessionStorage.getItem("nombre")+'</b>'+'<li class="ui-li-has-thumb ui-btn ui-btn-icon-right ui-li ui-btn-down-c ui-btn-up-c"><div class="ui-btn-inner"><a href="#home_user" class="ui-link-inherit"><div class="ui-btn-text"><h3>'+result.frase+'</h3>'
-				+ '<p class="ui-li-desc"><h5>'+result.nombre+'</h5></p> '+'<p class="ui-li-desc"><h6>'+result.banda+'</h6></p><div></a><span class="ui-icon ui-icon-arrow-r"></span></li>';
-		var landmark = '<b>Hola '+sessionStorage.getItem("nombre")+'</b>'+'<h3>'+result.frase+'</h3>'+'<h4> <b>Canción : </b>'+result.nombre+'</h4>'+'<h5> <b>Por : </b>'+result.banda+'</h5>'
-				output.append(landmark);
-				output.append(landmark);
+            id_song = result.id; //NO BORAR , variable usada por el like
+            if(Number(cont) < 20){
+                cont=Number(cont)+1;
+            }
+            else{
+                sessionStorage.removeItem("cont");
+                cont=1;
+
+            }
+            sessionStorage.setItem("cont", cont);
+            var landmark = '<h3>'+result.frase+'</h3>'+'<h4> <b>Canción : </b>'+result.nombre+'</h4>'+'<h5> <b>Por : </b>'+result.banda+'</h5>'
+            output.append(landmark);
 	    },
 		error: function( req, status, err ) {
 		    console.log( 'something went wrong', status, err );
